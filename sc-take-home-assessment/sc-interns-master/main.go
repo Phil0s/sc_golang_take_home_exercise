@@ -7,16 +7,25 @@ import (
 	"github.com/gofrs/uuid"
 )
 
-func main() {
-	req := &folders.FetchFolderRequest{
-		OrgID: uuid.FromStringOrNil(folders.DefaultOrgID),
-	}
+// Purpose of this code is to fetch folders from sample.json base of matchign orgID and return them
 
-	res, err := folders.GetAllFolders(req)
+func main() {
+	// Getting example OrgID
+	req := &folders.FetchFolderRequest{
+		OrgID: uuid.FromStringOrNil(folders.TestOrgID),
+	}
+	// Calling fetch folder function, returned fetchfolderresponse
+	// res, err := folders.GetAllFolders(req)
+	// if err != nil {
+	// 	fmt.Printf("%v", err)
+	// 	return
+	// }
+	res, err := folders.FetchAllFoldersByOrgID(req.OrgID)
 	if err != nil {
 		fmt.Printf("%v", err)
 		return
 	}
-
+	// Format fetchfolderresponse into something readable
+	//fmt.Println(res)
 	folders.PrettyPrint(res)
 }

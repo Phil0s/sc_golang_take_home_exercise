@@ -19,6 +19,7 @@ import (
 
 const dataSetSize = 1000
 const DefaultOrgID = "c1556e17-b7c0-45a3-a6ae-9546248fb17a"
+const TestOrgID = "4212d618-66ff-468a-862d-ea49fef5e183"
 
 type Folder struct {
 	// An unique identifier for the folder, must be a valid UUID.
@@ -32,6 +33,7 @@ type Folder struct {
 	Deleted bool `json:"deleted"`
 }
 
+// For generating sample data
 func GenerateData() []*Folder {
 	rng, _ := codename.DefaultRNG()
 	sampleData := []*Folder{}
@@ -56,18 +58,20 @@ func GenerateData() []*Folder {
 	return sampleData
 }
 
+// Formating json structure into json string
 func PrettyPrint(b interface{}) {
 	s, _ := json.MarshalIndent(b, "", "\t")
 	fmt.Print(string(s))
 }
 
+// This function returns all the folders in sample.json as a slice of folder objects. But does not do the searching yet.
 func GetSampleData() []*Folder {
 	_, filename, _, _ := runtime.Caller(0)
-	fmt.Println(filename)
+	//fmt.Println(filename)
 	basePath := filepath.Dir(filename)
 	filePath := filepath.Join(basePath, "sample.json")
 
-	fmt.Println(filePath)
+	//fmt.Println(filePath)
 
 	file, err := os.Open(filePath)
 	if err != nil {
