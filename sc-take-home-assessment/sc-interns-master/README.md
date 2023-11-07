@@ -29,18 +29,18 @@ To run the code on your local machine
 ## Instructions
 
 - This technical assessment consist of 2 components.
-- Component 1:
+- Component 1: [Done]
   - within `folders.go`. 
-    - We would like you to read through the code and run the code.
-    - Write some comments on what you think the code does.
-    - suggest some improvement that can be made to the code.
-    - Implement the suggested improvement.
-    - Write up some unit tests in `folders_test.go` for your new `GetAllFolders` method
+    - We would like you to read through the code and run the code. [Done]
+    - Write some comments on what you think the code does. [Done]
+    - suggest some improvement that can be made to the code. [Done]
+    - Implement the suggested improvement. [Done]
+    - Write up some unit tests in `folders_test.go` for your new `GetAllFolders` method [Attempted]
 
-- Component 2:
-  - Extend your improved code to now facilitate pagination. 
-  - You can copy over the existing methods into `folders_pagination.go` to get started.
-  - Write a short explanation on why you choosen the solution you implemented.
+- Component 2: [In_Progress]
+  - Extend your improved code to now facilitate pagination. [In_Progress]
+  - You can copy over the existing methods into `folders_pagination.go` to get started. [In_Progress]
+  - Write a short explanation on why you choosen the solution you implemented. [In_Progress]
 
 ## What is pagination?
   - Pagination helps break down a large dataset into smaller chunks.

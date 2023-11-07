@@ -19,6 +19,8 @@ import (
 
 const dataSetSize = 1000
 const DefaultOrgID = "c1556e17-b7c0-45a3-a6ae-9546248fb17a"
+
+// Was used like DefaultOrgID in main.go just wanted to test with smaller result for easier reading
 const TestOrgID = "4212d618-66ff-468a-862d-ea49fef5e183"
 
 type Folder struct {
@@ -65,7 +67,8 @@ func PrettyPrint(b interface{}) {
 }
 
 // This function returns all the folders in sample.json as a slice of folder objects. But does not do the searching yet.
-func GetSampleData() []*Folder {
+// GetSampleData was lacking an error so I couldn't check in the fetch function. So added error
+func GetSampleData() ([]*Folder, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	//fmt.Println(filename)
 	basePath := filepath.Dir(filename)
@@ -83,5 +86,5 @@ func GetSampleData() []*Folder {
 
 	folders := []*Folder{}
 	json.Unmarshal(jsonByte, &folders)
-	return folders
+	return folders, nil
 }
