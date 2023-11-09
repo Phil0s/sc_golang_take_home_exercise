@@ -43,6 +43,7 @@ func askQuestion() string {
 	reader := bufio.NewReader(os.Stdin)
 	// Type this out for pagination test: c1556e17-b7c0-45a3-a6ae-9546248fb17a
 	// or this for smaller sample size and odd number: 4212d618-66ff-468a-862d-ea49fef5e183
+	// and this for small and even: 4212d618-66ff-468a-862d-ea49fef5e180
 	id, _ := getInput("Specify organisation ID: ", reader)
 	return id
 }
@@ -52,7 +53,8 @@ func display(folders []*folders.Folder, startIdx, endIdx int) {
 	for i := startIdx; i < endIdx; i++ {
 		// Incase odds number of folders and there it tries to search for the index of a sixth one, causing problems
 		if i < len(folders) {
-			fmt.Printf("ID: %s, Name: %s, Deleted: %v\n", folders[i].Id, folders[i].Name, folders[i].Deleted)
+			// Spacing for easier readability.
+			fmt.Printf("   ID: %s, Name: %s, Deleted: %v\n", folders[i].Id, folders[i].Name, folders[i].Deleted)
 		}
 	}
 }
@@ -80,12 +82,15 @@ func main() {
 		if strings.TrimSpace(input) == "1" {
 			startIdx += pageSize
 			if startIdx >= len(res) {
-				// For a five item slice, index goes up to 4 but length counts 5. So I think the minus one fixes that
-				// Note: this breaks the page search, because even if its odd numbers by going over the limit it will
-				// Show the last item only so a page with only one item.
-				startIdx = (len(res) - 1)
-				fmt.Println("startindex: ", startIdx)
-				fmt.Println("what im setting to:", len(res))
+				if len(res)%2 == 0 {
+					// Because when even last page will display only two
+					startIdx = (len(res) - 2)
+					fmt.Println("No further results. Reached last results")
+				} else {
+					// Because when odd last page will display only one
+					startIdx = (len(res) - 1)
+					fmt.Println("No further results. Reached last results")
+				}
 			}
 			endIdx = startIdx + pageSize
 		} else if strings.TrimSpace(input) == "0" {
