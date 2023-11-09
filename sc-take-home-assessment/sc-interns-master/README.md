@@ -37,10 +37,10 @@ To run the code on your local machine
     - Implement the suggested improvement. [Done]
     - Write up some unit tests in `folders_test.go` for your new `GetAllFolders` method [Attempted]
 
-- Component 2: [In_Progress]
-  - Extend your improved code to now facilitate pagination. [In_Progress]
-  - You can copy over the existing methods into `folders_pagination.go` to get started. [In_Progress]
-  - Write a short explanation on why you choosen the solution you implemented. [In_Progress]
+- Component 2: [Done]
+  - Extend your improved code to now facilitate pagination. [Done]
+  - You can copy over the existing methods into `folders_pagination.go` to get started. [Done]
+  - Write a short explanation on why you choosen the solution you implemented. [Done]
 
 ## What is pagination?
   - Pagination helps break down a large dataset into smaller chunks.
